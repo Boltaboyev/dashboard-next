@@ -18,18 +18,19 @@ const FormModal = ({
     fetchData: any
     selectedProduct: any
 }) => {
-    const [form] = Form.useForm()
     const [imageUrl, setImageUrl] = useState<any>(null)
+    const [form] = Form.useForm()
 
     useEffect(() => {
         if (selectedProduct) {
+            if (!form || !isModalOpen) return 
             form.setFieldsValue(selectedProduct)
             setImageUrl(selectedProduct.img || null)
         } else {
             form.resetFields()
             setImageUrl(null)
         }
-    }, [selectedProduct, form])
+    }, [selectedProduct, form, isModalOpen])
 
     const handleImageChange = (info: any) => {
         const file = info.file.originFileObj

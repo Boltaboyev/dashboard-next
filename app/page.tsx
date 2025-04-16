@@ -8,8 +8,6 @@ import {my_axios} from "@/hook/useAxios"
 // icons
 import {
     LogoutOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
     PlusCircleOutlined,
     UserOutlined,
 } from "@ant-design/icons"
@@ -23,8 +21,8 @@ import ProductTable from "@/components/table"
 const {Header, Sider, Content} = Layout
 
 const AdminDashboard = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [productData, setProductData] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState<any>(false)
+    const [productData, setProductData] = useState<any>([])
     const [isLogoutModalOpen, setIsLogoutModalOpen] = useState<any>(false)
     const [selectedProduct, setSelectedProduct] = useState<any>(null)
 
@@ -54,8 +52,7 @@ const AdminDashboard = () => {
         <Layout style={{minHeight: "100vh", overflow: "hidden"}}>
             <Sider
                 trigger={null}
-                collapsible
-                collapsed={false}
+                collapsed={true}
                 className="!sticky !top-0 !h-screen !overflow-auto">
                 <Menu
                     className="!h-screen"
@@ -144,7 +141,6 @@ const AdminDashboard = () => {
                 setIsModalOpen={setIsModalOpen}
                 fetchData={fetchData}
                 selectedProduct={selectedProduct}
-                setSelectedProduct={setSelectedProduct}
             />
 
             <Modal
